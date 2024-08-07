@@ -76,7 +76,7 @@ loginBtn.addEventListener('click',()=>{
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    window.location.href = '../Dashboard/dashboard.html'
+    window.location.href = '../Typing Test Game/index.html'
     // ...
   })
   .catch((error) => {
@@ -108,16 +108,3 @@ loginBtn.addEventListener('click',()=>{
     loginPassword.value = ''
   });
 })
-
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/auth.user
-    const uid = user.uid;
-    window.location.href = '../index.html'
-    // ...
-  } else {
-    // User is signed out
-    // ...
-  }
-});
