@@ -1,6 +1,6 @@
 import { app } from "../FirebaseApp/firebase.mjs";
 import { auth } from "../FirebaseApp/firebase.mjs";
-import { getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+import { getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged  } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 
 let userName = document.getElementById('userName')
 let createEmail = document.getElementById('createEmail')
@@ -108,3 +108,16 @@ loginBtn.addEventListener('click',()=>{
     loginPassword.value = ''
   });
 })
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/auth.user
+    const uid = user.uid;
+    window.location.href = '../index.html'
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+});
