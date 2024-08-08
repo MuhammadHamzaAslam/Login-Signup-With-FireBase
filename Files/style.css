@@ -70,7 +70,7 @@ body{
   font-size: 1.2rem;
   font-weight: 500;
   letter-spacing: 1px;
-  margin-top: 1.7rem;
+  /* margin-top: 1.7rem; */
   cursor: pointer;
   transition: 0.4s;
 }
@@ -87,4 +87,21 @@ body{
 }
 .signup label:hover{
   text-decoration: underline;
+}
+.line{
+    position: relative;
+    height: 1px;
+    width: 100%;
+    margin: 36px 0;
+    background-color: #d4d4d4;
+}
+.line::before{
+    content: 'Or';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFF;
+    color: #8b8b8b;
+    padding: 0 15px;
 }

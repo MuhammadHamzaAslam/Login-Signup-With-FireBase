@@ -1,6 +1,6 @@
 import { app } from "../FirebaseApp/firebase.mjs";
 import { auth } from "../FirebaseApp/firebase.mjs";
-import { getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged  } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+import { getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged ,GoogleAuthProvider,signInWithPopup } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 
 let userName = document.getElementById('userName')
 let createEmail = document.getElementById('createEmail')
@@ -106,5 +106,29 @@ loginBtn.addEventListener('click',()=>{
     }
     loginEmail.value = ''
     loginPassword.value = ''
+  });
+})
+const provider = new GoogleAuthProvider();
+let googleLoginBtn = document.getElementById('googleLoginBtn')
+googleLoginBtn.addEventListener('click',()=>{
+    signInWithPopup(auth, provider)
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+    // IdP data available using getAdditionalUserInfo(result)
+    window.location.href = "../Typing Test Game/index.html"
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
   });
 })
